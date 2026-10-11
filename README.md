@@ -10,15 +10,12 @@ Many skilled students and job seekers, especially in Tier-2/3 cities, struggle t
 
 ### Agent 1, Resume Strategist
 
----
-
 - Upload a resume (PDF, DOCX or TXT) or paste the text
 - Compare it with any job description
 - Get a match score (0 to 100), matched skills, skill gaps, resume improvements, an action plan and likely interview topics
 - Download the full strategy as a PDF
 
 ### Agent 2, Daily Planner
-
 
 - Converts the skill gaps into a 3, 7 or 14 day plan with 1, 2 or 4 hours per day
 - Reminders (stub): Email and WhatsApp endpoint ready to connect to a real provider
@@ -55,7 +52,8 @@ Many skilled students and job seekers, especially in Tier-2/3 cities, struggle t
 - CSS
 - JavaScript
 ---
-3. Hosting	Render
+3. Hosting
+- Render
 ---
 
 ## Project structure
@@ -90,13 +88,7 @@ Open http://127.0.0.1:8000 (interactive API docs at /docs).
 ## Environment variables
 ```
 GEMINI_API_KEY	Your Gemini API key. If empty, the app runs in demo mode	empty
-```
----
-```
 GEMINI_MODEL	: 	gemini-3.8-flash
-```
----
-```
 Deployment (Render)
 ```
 ---

@@ -1,0 +1,152 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Career Copilot</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#17132E;--ink2:#2A2450;--sun:#FF7A2F;--rose:#E8396B;--mist:#F6F4FB;--line:#E3DFF0;--good:#0E8F60;--gap:#C9304F;--mut:#6B6784;
+--hf:"Bricolage Grotesque","Segoe UI",Arial,sans-serif;--bf:"DM Sans","Segoe UI",Arial,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--bf);color:var(--ink);background:var(--mist);line-height:1.55}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+/* hero */
+.hero{background:var(--ink);color:#fff;position:relative;overflow:hidden;padding-bottom:90px}
+.sun{position:absolute;right:-140px;bottom:-330px;width:640px;height:640px;border-radius:50%;background:linear-gradient(180deg,var(--sun),var(--rose));animation:rise 1.4s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{transform:translateY(260px)}to{transform:none}}
+nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0;position:relative;z-index:2}
+.logo{font-family:var(--hf);font-weight:800;font-size:21px}
+.badge{font-size:13px;font-weight:700;padding:6px 14px;border-radius:99px;background:#ffffff1f;border:1px solid #ffffff44}
+.badge.live{background:var(--sun);border-color:var(--sun);color:var(--ink)}
+.heroGrid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding-top:34px;position:relative;z-index:2}
+h1{font-family:var(--hf);font-weight:800;font-size:clamp(34px,5.2vw,62px);line-height:1.04;margin:0 0 18px;letter-spacing:-.02em}
+.lead{font-size:18px;color:#d9d5ef;max-width:520px;margin:0 0 28px}
+.cta{display:inline-block;background:var(--sun);color:var(--ink);font-weight:700;padding:14px 26px;border-radius:12px;text-decoration:none;transition:transform .15s}
+.cta:hover{transform:translateY(-2px)}
+.sample{background:#fff;color:var(--ink);border-radius:22px;padding:26px;box-shadow:0 30px 60px #0006;max-width:340px;justify-self:end;width:100%}
+.sample small{color:var(--mut);font-weight:500}
+.ringBox{position:relative;width:170px;height:170px;margin:12px auto}
+.ringBox svg{width:100%;height:100%;transform:rotate(-90deg)}
+.track{fill:none;stroke:var(--line);stroke-width:11}.arc{fill:none;stroke:url(#g);stroke-width:11;stroke-linecap:round;transition:stroke-dashoffset 1.6s cubic-bezier(.2,.8,.2,1)}
+.ringNum{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--hf);font-weight:800;font-size:46px}
+.ringNum span{font-size:14px;font-weight:500;color:var(--mut);display:block;text-align:center;margin-top:-8px}
+/* tool */
+.tool{display:grid;grid-template-columns:.9fr 1.1fr;gap:26px;margin-top:-52px;position:relative;z-index:3;align-items:start}
+.panel{background:#fff;border-radius:20px;padding:28px;box-shadow:0 12px 40px #17132e1a}
+h2{font-family:var(--hf);font-size:26px;margin:0 0 6px;letter-spacing:-.01em}
+.sub{color:var(--mut);margin:0 0 18px}
+label{display:block;font-weight:700;font-size:14px;margin:16px 0 6px}
+textarea,input[type=text]{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;font:inherit;background:var(--mist);color:var(--ink);transition:border .15s,background .15s}
+textarea{min-height:96px;resize:vertical}
+textarea:focus,input[type=text]:focus{border-color:var(--sun);background:#fff;outline:none}
+.drop{display:block;border:2px dashed #b9b2d6;border-radius:14px;padding:22px;text-align:center;cursor:pointer;background:var(--mist);margin:0;transition:all .15s}
+.drop:hover,.drop.over{border-color:var(--sun);background:#fff4ec}
+.drop b{display:block;font-size:15px}.drop span{color:var(--mut);font-size:13px}
+.drop input{position:absolute;opacity:0;width:1px;height:1px}
+.drop:focus-within{outline:3px solid var(--sun);outline-offset:2px}
+button.go{margin-top:22px;width:100%;border:0;border-radius:12px;padding:15px;font:inherit;font-weight:700;font-size:16px;color:#fff;background:linear-gradient(90deg,var(--rose),var(--sun));cursor:pointer;transition:transform .15s,opacity .15s}
+button.go:hover{transform:translateY(-2px)}button.go:disabled{opacity:.6;cursor:wait;transform:none}
+.err{color:var(--gap);font-weight:500;margin-top:12px}
+.empty ol{padding:0;margin:20px 0 0;list-style:none;display:grid;gap:14px}
+.empty li{display:flex;gap:14px;align-items:flex-start}
+.empty li i{flex:none;width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-style:normal;font-weight:700}
+.empty li b{display:block}.empty li span{color:var(--mut);font-size:14px}
+.hide{display:none!important}
+.resTop{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.resTop .ringBox{margin:0;width:140px;height:140px}.resTop .ringNum{font-size:38px}
+.resTop p{flex:1;min-width:220px;margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 18px}
+.chip{padding:6px 12px;border-radius:99px;font-size:13.5px;font-weight:500}
+.chip.ok{background:#dcf5ea;color:#09684a}.chip.gap{background:#fde3e8;color:#9c2139}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}.cols h3{margin:14px 0 0;font-size:15px}
+.tabs{display:flex;gap:6px;border-bottom:1.5px solid var(--line);margin-top:10px;flex-wrap:wrap}
+.tab{border:0;background:none;font:inherit;font-weight:700;padding:10px 14px;color:var(--mut);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1.5px}
+.tab[aria-selected=true]{color:var(--ink);border-color:var(--sun)}
+.tabPanel ul{margin:14px 0 0;padding-left:20px}.tabPanel li{margin-bottom:8px}
+.pdfBtn{margin-top:20px;border:2px solid var(--ink);background:#fff;color:var(--ink);font:inherit;font-weight:700;padding:11px 20px;border-radius:12px;cursor:pointer;transition:all .15s}
+.pdfBtn:hover{background:var(--ink);color:#fff}
+/* planner */
+.planner{margin:26px 0 0}.pgrid{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end}
+.pgrid div{min-width:130px}select{padding:11px 14px;border:1.5px solid var(--line);border-radius:12px;font:inherit;background:var(--mist);width:100%}
+.mk{border:0;background:var(--ink);color:#fff;font:inherit;font-weight:700;padding:12px 22px;border-radius:12px;cursor:pointer}.mk:disabled{opacity:.6}
+.timeline{list-style:none;margin:26px 0 0;padding:0 0 0 26px;border-left:3px solid var(--line)}
+.timeline>li{position:relative;background:var(--mist);border-radius:14px;padding:14px 18px;margin-bottom:14px}
+.timeline>li::before{content:"";position:absolute;left:-36px;top:20px;width:15px;height:15px;border-radius:50%;background:var(--sun);border:3px solid #fff;box-shadow:0 0 0 2px var(--sun)}
+.timeline b{font-family:var(--hf);font-size:17px}.timeline ul{margin:6px 0 0;padding-left:18px;color:#3b3560}
+.remind{margin-top:22px;padding-top:18px;border-top:1.5px solid var(--line)}
+.rgrid{display:grid;grid-template-columns:160px 1fr auto;gap:10px;align-items:center}
+footer{margin:60px 0 30px;text-align:center;color:var(--mut);font-size:14px}
+footer b{color:var(--ink)}
+.spin{display:inline-block;width:16px;height:16px;border:3px solid #fff8;border-top-color:#fff;border-radius:50%;animation:sp .8s linear infinite;vertical-align:-3px;margin-right:8px}
+@keyframes sp{to{transform:rotate(360deg)}}
+@media(max-width:860px){.heroGrid,.tool{grid-template-columns:1fr}.sample{justify-self:start}.tool{margin-top:-40px}.cols{grid-template-columns:1fr}.rgrid{grid-template-columns:1fr}.sun{width:420px;height:420px;bottom:-250px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<header class="hero"><div class="wrap">
+<nav><span class="logo">AI Career Copilot</span><span class="badge" id="mode">checking...</span></nav>
+<div class="heroGrid"><div>
+<h1>Know exactly what stands between your resume and the job</h1>
+<p class="lead">Upload your resume, paste a job description, and get an honest match score, the skills you are missing, and a day-by-day plan to close the gap.</p>
+<a class="cta" href="#tool">Analyze my resume</a></div>
+<div class="sample" aria-hidden="true"><small>Sample result</small>
+<div class="ringBox"><svg viewBox="0 0 120 120"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E8396B"/><stop offset="1" stop-color="#FF7A2F"/></linearGradient></defs><circle class="track" cx="60" cy="60" r="54"/><circle class="arc" id="heroArc" cx="60" cy="60" r="54"/></svg><div class="ringNum"><div>78<span>match</span></div></div></div>
+<div class="chips" style="justify-content:center"><span class="chip ok">Python</span><span class="chip ok">FastAPI</span><span class="chip gap">Docker</span></div></div>
+</div></div><div class="sun"></div></header>
+<main class="wrap"><div class="tool" id="tool">
+<section class="panel"><h2>Your resume and target job</h2><p class="sub">Agent 1: Resume Strategist</p>
+<label class="drop" id="drop"><input type="file" id="file" accept=".pdf,.docx,.txt"><b id="fname">Drop your resume here or click to browse</b><span>PDF, DOCX or TXT</span></label>
+<label for="resume">Or paste your resume text</label><textarea id="resume"></textarea>
+<label for="jd">Job description</label><textarea id="jd" placeholder="Paste the responsibilities and requirements from the job posting"></textarea>
+<label for="extra">Extra skills (comma separated, optional)</label><input type="text" id="extra">
+<button class="go" id="go">Analyze my resume</button><div class="err" id="err" role="alert"></div></section>
+<section class="panel" id="right" aria-live="polite">
+<div class="empty" id="empty"><h2>Your results will appear here</h2><p class="sub">Three steps, about half a minute.</p>
+<ol><li><i>1</i><div><b>Add your resume</b><span>Upload a file or paste the text.</span></div></li>
+<li><i>2</i><div><b>Paste the job description</b><span>The more complete it is, the sharper the analysis.</span></div></li>
+<li><i>3</i><div><b>Get your plan</b><span>Match score, skill gaps and a daily study plan.</span></div></li></ol></div>
+<div id="res" class="hide"><div class="resTop"><div class="ringBox"><svg viewBox="0 0 120 120"><circle class="track" cx="60" cy="60" r="54"/><circle class="arc" id="arc" cx="60" cy="60" r="54"/></svg><div class="ringNum"><div id="score">0<span>match</span></div></div></div><p id="summary"></p></div>
+<div class="cols"><div><h3>Skills you have</h3><div class="chips" id="matched"></div></div><div><h3>Skill gaps</h3><div class="chips" id="missing"></div></div></div>
+<div class="tabs" role="tablist"><button class="tab" role="tab" aria-selected="true" data-t="impr">Resume fixes</button><button class="tab" role="tab" aria-selected="false" data-t="act">Action plan</button><button class="tab" role="tab" aria-selected="false" data-t="intv">Interview topics</button></div>
+<div class="tabPanel" id="p-impr"><ul id="impr"></ul></div><div class="tabPanel hide" id="p-act"><ul id="act"></ul></div><div class="tabPanel hide" id="p-intv"><ul id="intv"></ul></div>
+<button class="pdfBtn" id="pdf">Download PDF strategy</button>
+<div class="planner"><h2>Turn the gaps into a plan</h2><p class="sub">Agent 2: Daily Planner</p>
+<div class="pgrid"><div><label for="days" style="margin-top:0">Days</label><select id="days"><option>3</option><option selected>7</option><option>14</option></select></div>
+<div><label for="hrs" style="margin-top:0">Hours per day</label><select id="hrs"><option>1</option><option selected>2</option><option>4</option></select></div>
+<button class="mk" id="mkplan">Create daily plan</button></div><div class="err" id="err2" role="alert"></div>
+<ol class="timeline hide" id="plan"></ol>
+<div class="remind hide" id="remind"><b>Send yourself a reminder</b> <small style="color:var(--mut)">(demo stub, nothing is actually sent)</small>
+<div class="rgrid" style="margin-top:10px"><select id="chan" aria-label="Channel"><option value="email">Email</option><option value="whatsapp">WhatsApp</option></select><input type="text" id="to" placeholder="Email or phone" aria-label="Email or phone"><button class="mk" id="send">Send reminder</button></div><div id="sent" style="margin-top:8px;color:var(--good);font-weight:500"></div></div></div>
+</div></section></div>
+<footer>Built by <b>Aditi Tripathi</b>, ABES Engineering College. Supporting UN SDG 8: Decent Work and Economic Growth.</footer></main>
+<script>
+const $=id=>document.getElementById(id),C=2*Math.PI*54;let last=null;
+function ring(el,s){el.style.strokeDasharray=C;el.style.strokeDashoffset=C;requestAnimationFrame(()=>requestAnimationFrame(()=>el.style.strokeDashoffset=C*(1-s/100)))}
+function fill(el,items,cls){el.innerHTML="";items.forEach(t=>{const e=document.createElement(cls?"span":"li");if(cls)e.className="chip "+cls;e.textContent=t;el.appendChild(e)})}
+ring($("heroArc"),78);
+fetch("/api/health").then(r=>r.json()).then(h=>{$("mode").textContent=h.demo_mode?"Demo mode (no API key)":"Live: Gemini";if(!h.demo_mode)$("mode").classList.add("live")});
+const drop=$("drop");
+$("file").onchange=()=>{$("fname").textContent=$("file").files[0]?$("file").files[0].name:"Drop your resume here or click to browse"};
+["dragenter","dragover"].forEach(e=>drop.addEventListener(e,ev=>{ev.preventDefault();drop.classList.add("over")}));
+["dragleave","drop"].forEach(e=>drop.addEventListener(e,ev=>{ev.preventDefault();drop.classList.remove("over")}));
+drop.addEventListener("drop",ev=>{if(ev.dataTransfer.files.length){$("file").files=ev.dataTransfer.files;$("file").onchange()}});
+document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.setAttribute("aria-selected",x===b));["impr","act","intv"].forEach(k=>$("p-"+k).classList.toggle("hide",k!==b.dataset.t))});
+$("go").onclick=async()=>{$("err").textContent="";const g=$("go");g.disabled=true;g.innerHTML='<span class="spin"></span>Analyzing, this can take up to 30 seconds';
+ const fd=new FormData();fd.append("job_description",$("jd").value);fd.append("extra_skills",$("extra").value);fd.append("resume_text",$("resume").value);
+ if($("file").files[0])fd.append("file",$("file").files[0]);
+ try{const r=await fetch("/api/analyze",{method:"POST",body:fd});const d=await r.json();if(!r.ok)throw new Error(d.detail||"Request failed");
+  last=d;$("empty").classList.add("hide");$("res").classList.remove("hide");
+  $("score").firstChild.textContent=d.match_score;ring($("arc"),d.match_score);$("summary").textContent=d.summary;
+  fill($("matched"),d.matched_skills,"ok");fill($("missing"),d.missing_skills,"gap");fill($("impr"),d.resume_improvements);fill($("act"),d.action_plan);fill($("intv"),d.interview_topics);
+  $("plan").classList.add("hide");$("remind").classList.add("hide");$("right").scrollIntoView({behavior:"smooth",block:"start"});
+ }catch(e){$("err").textContent=e.message}
+ g.disabled=false;g.textContent="Analyze my resume"};
+$("pdf").onclick=async()=>{const r=await fetch("/api/resume-pdf",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(last)});
+ const a=document.createElement("a");a.href=URL.createObjectURL(await r.blob());a.download="career_strategy.pdf";a.click()};
+$("mkplan").onclick=async()=>{$("err2").textContent="";const b=$("mkplan");b.disabled=true;b.textContent="Planning...";
+ try{const r=await fetch("/api/plan",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({missing_skills:last.missing_skills,days:+$("days").value,hours_per_day:+$("hrs").value})});
+  const d=await r.json();if(!r.ok)throw new Error(d.detail||"Request failed");const pl=$("plan");pl.innerHTML="";
+  d.days.forEach(x=>{const li=document.createElement("li");const t=document.createElement("b");t.textContent="Day "+x.day+": "+x.focus;li.appendChild(t);
+   const ul=document.createElement("ul");fill(ul,x.tasks);li.appendChild(ul);pl.appendChild(li)});pl.classList.remove("hide");$("remind").classList.remove("hide");
+ }catch(e){$("err2").textContent=e.message}b.disabled=false;b.textContent="Create daily plan"};
+$("send").onclick=async()=>{const r=await fetch("/api/notify",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({channel:$("chan").value,to:$("to").value,message:"Your daily career plan is ready"})});
+ const d=await r.json();$("sent").textContent=r.ok?d.status:(d.detail||"failed")};
+</script></body></html>

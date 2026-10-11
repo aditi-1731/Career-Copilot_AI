@@ -1,5 +1,7 @@
 # AI Career Copilot
 
+Deployed link: https://career-copilot-ai-qnp2.onrender.com
+
 AI career agents that compare your resume with a job description, show your skill gaps and match score, and build a daily study plan. Built with FastAPI and Google Gemini for SDG 8.
 
 ## Overview
@@ -34,8 +36,8 @@ Many skilled students and job seekers, especially in Tier-2/3 cities, struggle t
 
 ## Tech stack
 
-1. Backend
----
+### 1. Backend
+
 - Python
 -  FastAPI
 -   Uvicorn
@@ -46,14 +48,18 @@ Many skilled students and job seekers, especially in Tier-2/3 cities, struggle t
 - PDF report	ReportLab
 ---
 
-2. Frontend
----
+### 2. Frontend
+
 - HTML
 - CSS
 - JavaScript
+  
 ---
-3. Hosting
+
+### 3. Hosting
+
 - Render
+
 ---
 
 ## Project structure
@@ -112,6 +118,7 @@ POST	/api/notify	Reminder stub (does not send real messages)
 ```
 ---
 ## Limitations
+
 - No user accounts or database: results are not saved between sessions.
 - Email and WhatsApp reminders are a stub and do not send anything yet.
 - Scanned or image-only PDFs cannot be read, because there is no OCR.

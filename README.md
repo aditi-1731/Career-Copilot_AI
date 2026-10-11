@@ -1,10 +1,10 @@
 # AI Career Copilot
-
+---
 AI career agents that compare your resume with a job description, show your skill gaps and match score, and build a daily study plan. Built with FastAPI and Google Gemini for SDG 8.
 ---
 
 ## Overview
-
+---
 Many skilled students and job seekers, especially in Tier-2/3 cities, struggle to turn their skills into jobs. They do not know how their resume matches a real job opening, or which skills to learn first. AI Career Copilot gives them personalised, instant guidance: an honest match score, the exact skill gaps, resume fixes, and a daily plan to close the gap.
 --- 
 ## Features

@@ -120,6 +120,7 @@ POST	/api/notify	Reminder stub (does not send real messages)
 - Quality depends on how complete the job description is.
 - Each analysis is one Gemini call, so it needs internet and is subject to API quotas.
 - On a free hosting tier, the app sleeps when idle and the first load can take up to a minute.
+
 ---
 
 ## Future scope
@@ -131,11 +132,13 @@ POST	/api/notify	Reminder stub (does not send real messages)
 - Regional language support for students outside English-medium education
 - Progress tracking and streaks for the daily plan
 - Mock interview practice using the suggested interview topics
+  
 ---
 
 ## Acknowledgements
 
 Built as part of the IBM SkillsBuild x AICTE x BharatCares (CSRBOX) Machine Learning and Applied AI Internship Program 2026.
+
 ---
 
 ## Author
